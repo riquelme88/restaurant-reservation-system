@@ -44,8 +44,8 @@ model hours {
 }
 
 model cupom {
-  id      Int      @id @default(autoincrement())
+  id      Int    @id @default(autoincrement())
   price   Int
-  dateExp DateTime
+  dateExp String @default("")
   user    user[]
 }

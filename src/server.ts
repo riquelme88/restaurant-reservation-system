@@ -21,3 +21,8 @@ app.use('/', userRouter)
 app.listen(port, () => {
     console.log('Running at time in PORT: ', port)
 })
+
+
+let dateExp = '05/05/2024'
+let date = Intl.DateTimeFormat('pt-br').format(new Date(dateExp))
+console.log(date)
