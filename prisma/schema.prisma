@@ -37,9 +37,9 @@ model table {
 }
 
 model hours {
-  id   Int      @id @default(autoincrement())
-  hour Int      @default(0)
-  day  DateTime @default(now())
+  id   Int    @id @default(autoincrement())
+  hour String
+  day  String
   user user[]
 }
 
