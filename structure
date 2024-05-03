@@ -1,0 +1,63 @@
+Framewokrs : 
+
+express,
+prisma,
+zod,
+bcrypt,
+cors,
+nodemon,
+
+Banco de dados : 
+
+- User : 
+- id
+- name
+- email
+- cpf
+- password
+- Price
+- Cupom
+
+- Table : 
+- id
+- tableNumber
+- qtPeople
+- idUser
+- idHour
+
+- Hours : 
+- id
+- hour
+- day
+- idUser
+
+- Cupom : 
+- id
+- price
+- dateexp
+
+
+Rotas : 
+
+- Rotas -admin : 
+- POST /admin/login
+- GET /admin/cupom
+- POST /admin/cupom
+- PUT /admin/cupom/:id
+- DELETE /admin/cupom/:id
+- GET /admin/hour
+- GET /admin/hour/:id
+- POST /admin/hour
+?- PUT /admin/hour/:id
+- DELETE /admin/hour/:id
+- GET /admin/table
+- GET /admin/table/:id // ou numero da mesa 
+- POST /admin/table
+- PUT  /admin/table/:id
+- DELETE /admin/table/:id
+
+// TODO : depois fazer o do usuario 
+
+
+
+
