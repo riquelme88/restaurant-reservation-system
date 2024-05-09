@@ -15,8 +15,8 @@ app.use(cors())
 
 const port = parseInt(process.env.PORT as string)
 
-app.use('/admin', adminRouter)
 app.use('/', userRouter)
+app.use('/admin', adminRouter)
 
 app.listen(port, () => {
     console.log('Running at time in PORT: ', port)

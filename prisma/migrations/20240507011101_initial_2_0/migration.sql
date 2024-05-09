@@ -5,10 +5,10 @@ CREATE TABLE "user" (
     "email" TEXT NOT NULL,
     "cpf" TEXT NOT NULL,
     "password" TEXT NOT NULL,
-    "price" INTEGER NOT NULL DEFAULT 0,
-    "idTable" INTEGER NOT NULL,
-    "idHour" INTEGER NOT NULL,
-    "idCupom" INTEGER NOT NULL,
+    "priceUsed" INTEGER NOT NULL DEFAULT 0,
+    "idTable" INTEGER NOT NULL DEFAULT 0,
+    "idHour" INTEGER NOT NULL DEFAULT 0,
+    "idCupom" INTEGER NOT NULL DEFAULT 0,
 
     CONSTRAINT "user_pkey" PRIMARY KEY ("id")
 );
@@ -25,8 +25,8 @@ CREATE TABLE "table" (
 -- CreateTable
 CREATE TABLE "hours" (
     "id" SERIAL NOT NULL,
-    "hour" INTEGER NOT NULL DEFAULT 0,
-    "day" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "hour" TEXT NOT NULL,
+    "day" TEXT NOT NULL,
 
     CONSTRAINT "hours_pkey" PRIMARY KEY ("id")
 );
@@ -35,6 +35,7 @@ CREATE TABLE "hours" (
 CREATE TABLE "cupom" (
     "id" SERIAL NOT NULL,
     "price" INTEGER NOT NULL,
+    "dateExp" TEXT NOT NULL DEFAULT '',
 
     CONSTRAINT "cupom_pkey" PRIMARY KEY ("id")
 );
@@ -44,6 +45,9 @@ CREATE UNIQUE INDEX "user_email_key" ON "user"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "user_cpf_key" ON "user"("cpf");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "table_tableNumber_key" ON "table"("tableNumber");
 
 -- AddForeignKey
 ALTER TABLE "user" ADD CONSTRAINT "user_idTable_fkey" FOREIGN KEY ("idTable") REFERENCES "table"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

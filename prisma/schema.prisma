@@ -14,19 +14,19 @@ datasource db {
 }
 
 model user {
-  id       Int    @id @default(autoincrement())
-  name     String
-  email    String @unique
-  cpf      String @unique
-  password String
-  price    Int    @default(0)
-  idTable  Int
-  idHour   Int
-  idCupom  Int
+  id        Int    @id @default(autoincrement())
+  name      String
+  email     String @unique
+  cpf       String @unique
+  password  String
+  priceUsed Int    @default(0)
+  tableId   Int?
+  hoursId   Int?
+  cupomId   Int?
 
-  table table @relation(fields: [idTable], references: [id])
-  hours hours @relation(fields: [idHour], references: [id])
-  cupom cupom @relation(fields: [idCupom], references: [id])
+  table table? @relation(fields: [tableId], references: [id])
+  hours hours? @relation(fields: [hoursId], references: [id])
+  cupom cupom? @relation(fields: [cupomId], references: [id])
 }
 
 model table {

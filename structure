@@ -58,6 +58,16 @@ Rotas :
 
 // TODO : depois fazer o do usuario 
 
+ - Rotas User
+ - POST /register
+ - POST /login
+ - PUT /user/update/:id
+ - 
+ 
+
+
+
+
 
 
 
