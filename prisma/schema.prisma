@@ -20,6 +20,7 @@ model user {
   cpf       String @unique
   password  String
   priceUsed Int    @default(0)
+  token     String @default(cuid())
   tableId   Int?
   hoursId   Int?
   cupomId   Int?

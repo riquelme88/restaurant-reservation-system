@@ -18,7 +18,7 @@ router.delete('/cupom/:id', auth.validate, cupom.remove)
 router.get('/hour', auth.validate, hour.getAll)
 router.get('/hour/:id', auth.validate, hour.getOne)
 router.post('/hour', auth.validate, hour.addHour)
-router.put('/hour/:id', auth.validate, hour.updateOne)
+//router.put('/hour/:id', auth.validate, hour.updateOne)
 router.delete('/hour/:id', auth.validate, hour.remove)
 
 router.get('/table', auth.validate, table.getAll)

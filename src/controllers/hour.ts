@@ -8,6 +8,7 @@ export const getAll: RequestHandler = async (req, res) => {
 
     if (!allHours) { return res.json({ error: 'Ocorreu algum erro' }) }
 
+    await hours.update()
     res.json({ hours: allHours })
 }
 
@@ -38,7 +39,7 @@ export const addHour: RequestHandler = async (req, res) => {
     res.json({ hours: newHour })
 }
 
-export const updateOne: RequestHandler = async (req, res) => {
+/*export const updateOne: RequestHandler = async (req, res) => {
     const { id } = req.params
     const updateHourSchema = z.object({
         hour: z.string().optional(),
@@ -56,7 +57,7 @@ export const updateOne: RequestHandler = async (req, res) => {
     if (!updateHour) { return res.json({ error: 'Ocorreu algum erro' }) }
 
     res.json({ hours: updateHour })
-}
+}*/
 
 export const remove: RequestHandler = async (req, res) => {
     const { id } = req.params

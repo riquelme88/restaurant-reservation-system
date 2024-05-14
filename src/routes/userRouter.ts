@@ -9,10 +9,11 @@ const router = Router()
 
 router.get('/ping', authUser.pong)
 router.post('/register', authUser.register)
+router.get('/login', authUser.login)
 //router.put('/update/:id', users.updateOne)
 
-router.put('/tables/:id', reserves.table)
-router.put('/hours/:id', reserves.hour)
+router.put('/tables/:id', authUser.privateRoute, reserves.table)
+router.put('/hours/:id', authUser.privateRoute, reserves.hour)
 
 
 export default router

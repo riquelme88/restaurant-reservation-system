@@ -22,9 +22,24 @@ export const addHour = async (data: EventCreateType) => {
 }
 
 type EventUpdateType = Prisma.Args<typeof prisma.hours, 'update'>['data']
-export const update = async (id: number, data: EventUpdateType) => {
+export const update = async () => {
     try {
-        return await prisma.hours.update({ where: { id }, data })
+        const hour = await prisma.hours.findMany()
+        for (let i in hour) {
+            let day = hour[i].day
+            let dayArray = day.split('/')
+            dayArray.reverse()
+            day = dayArray.join('/')
+            let dateBase = new Date(day)
+            let dateNow = new Date()
+            if (dateNow.getTime() > dateBase.getTime()) {
+                return await prisma.hours.updateMany({
+                    data: {
+                        day: Intl.DateTimeFormat('pt-br').format(new Date)
+                    }
+                })
+            }
+        }
     } catch (error) {
         return false
     }

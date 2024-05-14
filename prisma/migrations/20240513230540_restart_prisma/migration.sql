@@ -6,9 +6,10 @@ CREATE TABLE "user" (
     "cpf" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "priceUsed" INTEGER NOT NULL DEFAULT 0,
-    "idTable" INTEGER NOT NULL DEFAULT 0,
-    "idHour" INTEGER NOT NULL DEFAULT 0,
-    "idCupom" INTEGER NOT NULL DEFAULT 0,
+    "token" TEXT NOT NULL,
+    "tableId" INTEGER,
+    "hoursId" INTEGER,
+    "cupomId" INTEGER,
 
     CONSTRAINT "user_pkey" PRIMARY KEY ("id")
 );
@@ -47,13 +48,16 @@ CREATE UNIQUE INDEX "user_email_key" ON "user"("email");
 CREATE UNIQUE INDEX "user_cpf_key" ON "user"("cpf");
 
 -- CreateIndex
+CREATE UNIQUE INDEX "user_token_key" ON "user"("token");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "table_tableNumber_key" ON "table"("tableNumber");
 
 -- AddForeignKey
-ALTER TABLE "user" ADD CONSTRAINT "user_idTable_fkey" FOREIGN KEY ("idTable") REFERENCES "table"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "user" ADD CONSTRAINT "user_tableId_fkey" FOREIGN KEY ("tableId") REFERENCES "table"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "user" ADD CONSTRAINT "user_idHour_fkey" FOREIGN KEY ("idHour") REFERENCES "hours"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "user" ADD CONSTRAINT "user_hoursId_fkey" FOREIGN KEY ("hoursId") REFERENCES "hours"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "user" ADD CONSTRAINT "user_idCupom_fkey" FOREIGN KEY ("idCupom") REFERENCES "cupom"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "user" ADD CONSTRAINT "user_cupomId_fkey" FOREIGN KEY ("cupomId") REFERENCES "cupom"("id") ON DELETE SET NULL ON UPDATE CASCADE;
